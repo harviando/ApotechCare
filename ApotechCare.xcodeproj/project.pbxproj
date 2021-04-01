@@ -13,6 +13,7 @@
 		4ED670FC2615A63C00A48322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED670FA2615A63C00A48322 /* Main.storyboard */; };
 		4ED670FE2615A63D00A48322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED670FD2615A63D00A48322 /* Assets.xcassets */; };
 		4ED671012615A63D00A48322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED670FF2615A63D00A48322 /* LaunchScreen.storyboard */; };
+		9FC297C52615B1A10081116A /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC297C42615B1A10081116A /* Second.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4ED670FD2615A63D00A48322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED671002615A63D00A48322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ED671022615A63D00A48322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FC297C42615B1A10081116A /* Second.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		4ED670F32615A63C00A48322 /* ApotechCare */ = {
 			isa = PBXGroup;
 			children = (
+				9FC297C12615B11D0081116A /* Model */,
+				9FC297C22615B1460081116A /* View */,
+				9FC297C32615B14B0081116A /* Controller */,
 				4ED670F42615A63C00A48322 /* AppDelegate.swift */,
 				4ED670F62615A63C00A48322 /* SceneDelegate.swift */,
-				4ED670F82615A63C00A48322 /* ViewController.swift */,
-				4ED670FA2615A63C00A48322 /* Main.storyboard */,
 				4ED670FD2615A63D00A48322 /* Assets.xcassets */,
 				4ED670FF2615A63D00A48322 /* LaunchScreen.storyboard */,
 				4ED671022615A63D00A48322 /* Info.plist */,
 			);
 			path = ApotechCare;
+			sourceTree = "<group>";
+		};
+		9FC297C12615B11D0081116A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9FC297C22615B1460081116A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4ED670FA2615A63C00A48322 /* Main.storyboard */,
+				9FC297C42615B1A10081116A /* Second.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9FC297C32615B14B0081116A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4ED670F82615A63C00A48322 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC297C52615B1A10081116A /* Second.storyboard in Resources */,
 				4ED671012615A63D00A48322 /* LaunchScreen.storyboard in Resources */,
 				4ED670FE2615A63D00A48322 /* Assets.xcassets in Resources */,
 				4ED670FC2615A63C00A48322 /* Main.storyboard in Resources */,
@@ -290,7 +318,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = harvi.ApotechCare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suaveware.apotechCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -307,7 +335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = harvi.ApotechCare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suaveware.apotechCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
