@@ -13,4 +13,8 @@ struct Medicine {
     let medicine: String
     let price: String
     
+    let apotek: String
+    let medicineSummary: String
+    let description: String
+    let priceDeliver: [String]
 }

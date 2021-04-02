@@ -19,22 +19,26 @@ class MainViewController: UIViewController {
     let medicineModel = MedicineModel()
     let categoryModel = CategoryModel()
     
+    var indexPathCollection: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.definesPresentationContext = true
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search by name"
         self.navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        //        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        //            searchController.isActive = true
+        //        }
         
-    
     }
 }
 
@@ -99,8 +103,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cellCategory
         }
         
-        // Not Configure
-        
         if collectionView == self.categoryTwoCollectionView {
             let cellCategory = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryTwoIdentifier", for: indexPath) as! CategoryCellTwo
             let index = categoryModel.category[indexPath.row + 3]
@@ -124,7 +126,85 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return UICollectionViewCell()
         
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.medicineCollectionView {
+            
+            switch indexPath.row {
+            case 0:
+                performScreenPresentation(index: 0)
+            case 1:
+                performScreenPresentation(index: 1)
+            case 2:
+                performScreenPresentation(index: 2)
+            case 3:
+                performScreenPresentation(index: 3)
+            case 4:
+                performScreenPresentation(index: 4)
+            default:
+                print("Default Item")
+            }
+            
+            
+            
+        }
+        
+        if collectionView == self.categoryOneCollectionView {
+            
+    
+            
+        }
+        
+        if collectionView == self.categoryTwoCollectionView {
+            
+    
+            
+        }
+        
+        if collectionView == self.categoryThreeCollectionView {
+            
+    
+            
+        }
+        
+        
+        
+    }
+    
+    func performScreenPresentation(index: Int) {
+        
+        switch index {
+        case 0:
+            prepareData(index)
+        case 1:
+            prepareData(index)
+        case 2:
+            prepareData(index)
+        case 3:
+            prepareData(index)
+        case 4:
+            prepareData(index)
+        default:
+            print("Default Item")
+        }
+            
+        
+    }
+    
+    func prepareData(_ index : Int) {
+        let indexPath = medicineModel.medicine[index]
+        let image = UIImage(named: "\(indexPath.image)")
+        
+        let medicineVC = storyboard?.instantiateViewController(identifier: "medicineViewController") as! MedicineViewController
+        medicineVC.title = indexPath.medicine
+        medicineVC.medicineImageViewData = image
+        medicineVC.apotechLabelData = indexPath.apotek
+        medicineVC.medicineSummaryData = indexPath.medicineSummary
+        medicineVC.priceLabelData = indexPath.price
+        medicineVC.medicineDescriptionData = indexPath.description
+        self.navigationController?.pushViewController(medicineVC, animated: true)
+    }
+    
     
 }
-
