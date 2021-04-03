@@ -70,6 +70,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E7790A426180C8100B909B2 /* Medicine */ = {
+			isa = PBXGroup;
+			children = (
+				9F5E57ED2615BADF00767819 /* MedicineModel.swift */,
+				9F5E57F02615BB2100767819 /* Medicine.swift */,
+			);
+			path = Medicine;
+			sourceTree = "<group>";
+		};
+		4E7790A526180CDC00B909B2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9F5E57F32615C2E500767819 /* Category.swift */,
+				9F5E57F62615C31600767819 /* CategoryModel.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		4ED670E82615A63C00A48322 = {
 			isa = PBXGroup;
 			children = (
@@ -122,11 +140,9 @@
 		9FC297C12615B11D0081116A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E7790A526180CDC00B909B2 /* Category */,
+				4E7790A426180C8100B909B2 /* Medicine */,
 				9F0164B52617DC7F00D58176 /* Realm */,
-				9F5E57ED2615BADF00767819 /* MedicineModel.swift */,
-				9F5E57F02615BB2100767819 /* Medicine.swift */,
-				9F5E57F32615C2E500767819 /* Category.swift */,
-				9F5E57F62615C31600767819 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -142,6 +142,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 performScreenPresentation(index: 3)
             case 4:
                 performScreenPresentation(index: 4)
+            case 5:
+                performScreenPresentation(index: 5)
+            case 6:
+                performScreenPresentation(index: 6)
+            case 7:
+                performScreenPresentation(index: 7)
+            case 8:
+                performScreenPresentation(index: 8)
+            case 9:
+                performScreenPresentation(index: 9)
+            case 10:
+                performScreenPresentation(index: 10)
             default:
                 print("Default Item")
             }
@@ -151,6 +163,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         if collectionView == self.categoryOneCollectionView {
+            
+            switch indexPath.row {
+            case 0:
+                performScreenPresentation(index: 0)
+            case 1:
+                performScreenPresentation(index: 1)
+            case 2:
+                performScreenPresentation(index: 2)
+            default:
+            print("Default Item")
+            }
             
     
             
@@ -184,6 +207,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case 3:
             prepareData(index)
         case 4:
+            prepareData(index)
+        case 5:
+            prepareData(index)
+        case 6:
+            prepareData(index)
+        case 7:
+            prepareData(index)
+        case 8:
+            prepareData(index)
+        case 9:
+            prepareData(index)
+        case 10:
             prepareData(index)
         default:
             print("Default Item")

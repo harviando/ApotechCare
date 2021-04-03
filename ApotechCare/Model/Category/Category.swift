@@ -11,5 +11,14 @@ import Foundation
 struct Category {
     
     let image: String
+    let imageOne: String
+    let imageTwo: String
+    let imageThree: String
+    
     let name: String
+    let nameOne: String
+    let nameTwo: String
+    let nameThree: String
+    
+    
 }
