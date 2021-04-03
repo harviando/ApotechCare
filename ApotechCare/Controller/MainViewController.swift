@@ -166,11 +166,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             switch indexPath.row {
             case 0:
-                performScreenPresentation(index: 0)
-            case 1:
-                performScreenPresentation(index: 1)
-            case 2:
-                performScreenPresentation(index: 2)
+                performScreenPresentationOne(index: 0)
             default:
             print("Default Item")
             }
@@ -227,6 +223,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
     
+    
+    func performScreenPresentationOne(index: Int) {
+        switch index {
+        case 0:
+            prepareDataOne(index)
+        case 1:
+            prepareDataOne(index)
+        default:
+            print("Default Item")
+        }
+    }
+    
     func prepareData(_ index : Int) {
         let indexPath = medicineModel.medicine[index]
         let image = UIImage(named: "\(indexPath.image)")
@@ -238,7 +246,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         medicineVC.medicineSummaryData = indexPath.medicineSummary
         medicineVC.priceLabelData = indexPath.price
         medicineVC.medicineDescriptionData = indexPath.description
+        medicineVC.imageString = indexPath.image
         self.navigationController?.pushViewController(medicineVC, animated: true)
+    }
+    
+    
+    func prepareDataOne(_ index : Int) {
+        let categoryVC = storyboard?.instantiateViewController(identifier: "categoryViewController") as! CategoryViewController
+        self.navigationController?.pushViewController(categoryVC, animated: true)
     }
     
     

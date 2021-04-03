@@ -16,5 +16,6 @@ class MedicineObject: Object {
     @objc dynamic var medicinePrice: String?
     @objc dynamic var count: String?
     @objc dynamic var totalPay: String?
+    @objc dynamic var image: String?
     
 }

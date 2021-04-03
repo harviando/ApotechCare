@@ -18,6 +18,11 @@ class CheckOutCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        medicineImageView.layer.cornerRadius = (medicineImageView?.frame.size.width ?? 0.0) / 2
+        medicineImageView.layer.masksToBounds = true
+        medicineImageView.layer.borderWidth = 3.0
+        medicineImageView.layer.borderColor = UIColor.white.cgColor
        
     }
 

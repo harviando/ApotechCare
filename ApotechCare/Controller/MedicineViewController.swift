@@ -17,6 +17,7 @@ class MedicineViewController: UIViewController {
     
     
     // Variable
+    var imageString: String?
     var medicineImageViewData: UIImage!
     var apotechLabelData: String?
     var medicineSummaryData: String?
@@ -26,15 +27,16 @@ class MedicineViewController: UIViewController {
         "5.000", "10.000", "15.000",
     ]
     
+    let place: [String] = [
+        "Batu Aji", "Tj. Piayu", "Batam Centre",
+    ]
+    
     var selectedPrice: String?
     
     @IBOutlet weak var countLabel: UILabel!
     var countValue: Int = 0
     
-    
-    
-    
-    
+
     // UI Component
     @IBOutlet weak var medicineImageView: UIImageView!
     @IBOutlet weak var apotechLabel: UILabel!
@@ -102,12 +104,12 @@ extension MedicineViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return price[row]
+        return place[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPrice = price[row]
-        pricePicker.text = selectedPrice
+        pricePicker.text = "Rp. \(selectedPrice!)"
     }
     
     
@@ -123,9 +125,8 @@ extension MedicineViewController {
         
         let priceItem = Double(priceLabelData!)! * 1000
         let countValueItem = Double(countValue)
-        let totalPay = priceItem * countValueItem // 36000.0
-        
-        
+        let deliveryCharges = Double(selectedPrice!)! * 1000
+        let totalPay = (priceItem * countValueItem) + deliveryCharges  // 36000.0
         
         let numberToFormat = totalPay
         let numberFormatter = NumberFormatter()
@@ -144,6 +145,7 @@ extension MedicineViewController {
             newChart.medicine = self.title
             newChart.medicinePrice = self.priceLabelData
             newChart.totalPay = formattedNumber! // 36,000
+            newChart.image = self.imageString
             
             
             self.saveData(medicineObject: newChart)
@@ -173,7 +175,9 @@ extension MedicineViewController {
         } catch {
             print(error.localizedDescription)
         }
-        
+
     }
+    
+
     
 }

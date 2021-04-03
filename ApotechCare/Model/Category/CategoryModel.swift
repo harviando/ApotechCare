@@ -10,6 +10,7 @@ import Foundation
 
 class CategoryModel {
     
+    // MARK: - CATEGORY
     let category: [Category] = [
         Category(image: "favorite", name: "Favorite"),
         Category(image: "vitamin", name: "Vitamin"),
@@ -23,4 +24,100 @@ class CategoryModel {
         
     ]
     
+    // MARK: - FAVORITE
+    let favorite: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    
+    // MARK: - VITAMIN
+    let vitamin: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - PERAWATAN WAJAH
+    let perawatanWajah: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - PERAWATAN TUBUH
+    let perawatanTubuh: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - ALAT KESEHATAN
+    let alatKesehatan: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - ALAT NON MEDIS
+    let alatNonMedis: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - ALAT KONTRASEPSI
+    let alatKontrasepsi: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - BAYI
+    let bayi: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    // MARK: - LAIN-LAIN
+    let lainLain: [Category] = [
+        
+        Category(image: "vitaminOne", name: "Vitamin A"),
+        Category(image: "vitaminTwo", name: "Vitamin B"),
+        Category(image: "vitaminThree", name: "Vitamin C"),
+        Category(image: "vitaminFour", name: "Vitamin D")
+        
+    ]
+    
+    
+    
+    
 }
+
+

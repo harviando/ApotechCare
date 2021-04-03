@@ -15,8 +15,6 @@ class CheckOutViewController: UIViewController {
     
     var medicineObject: Results<MedicineObject>?
     
-    
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -52,8 +50,11 @@ extension CheckOutViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checkOutIdentifier", for: indexPath) as! CheckOutCell
         if let index = medicineObject?[indexPath.row] {
             cell.medicineLabel.text = index.medicine
-            cell.itemCount.text = "\(index.count!) Pcs"
-            cell.priceLabel.text = index.medicinePrice
+            cell.itemCount.text = "\(index.count!) Pcs x \(index.medicinePrice!)"
+            cell.priceLabel.text = index.totalPay
+            
+            let image = UIImage(named: "\(index.image!)")
+            cell.medicineImageView.image = image
         }
         
         
