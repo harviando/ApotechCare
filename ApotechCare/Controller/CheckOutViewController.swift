@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CheckOutViewController: UIViewController {
+    
+    let realm = try! Realm()
+    
+    var medicineObject: Results<MedicineObject>?
+    
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,8 +25,19 @@ class CheckOutViewController: UIViewController {
         tableView.register(UINib(nibName: "CheckOutCell", bundle: nil), forCellReuseIdentifier: "checkOutIdentifier")
         tableView.rowHeight = 90
         
+        loadData()
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    func loadData() {
+        medicineObject = realm.objects(MedicineObject.self)
+        
+        tableView.reloadData()
     }
 
 }
@@ -28,11 +45,16 @@ class CheckOutViewController: UIViewController {
 extension CheckOutViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return medicineObject?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checkOutIdentifier", for: indexPath) as! CheckOutCell
+        if let index = medicineObject?[indexPath.row] {
+            cell.medicineLabel.text = index.medicine
+            cell.itemCount.text = "\(index.count!) Pcs"
+            cell.priceLabel.text = index.medicinePrice
+        }
         
         
         return cell

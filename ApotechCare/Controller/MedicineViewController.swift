@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class MedicineViewController: UIViewController {
     
+    // Database Property
+    let realm = try! Realm()
+    
+    
+    // Variable
     var medicineImageViewData: UIImage!
     var apotechLabelData: String?
     var medicineSummaryData: String?
     var priceLabelData: String?
     var medicineDescriptionData: String?
+    let price: [String] = [
+        "5.000", "10.000", "15.000",
+    ]
     
+    var selectedPrice: String?
+    
+    @IBOutlet weak var countLabel: UILabel!
+    var countValue: Int = 0
+    
+    
+    
+    
+    
+    // UI Component
     @IBOutlet weak var medicineImageView: UIImageView!
     @IBOutlet weak var apotechLabel: UILabel!
     @IBOutlet weak var medicineSummary: UILabel!
@@ -24,11 +44,6 @@ class MedicineViewController: UIViewController {
     @IBOutlet weak var medicineDescription: UITextView!
     let pickerView = UIPickerView()
     
-    let price: [String] = [
-        "Rp. 5.000", "Rp. 10.000", "Rp 15.000",
-    ]
-    
-    var selectedPrice: String?
     
     
     
@@ -41,8 +56,12 @@ class MedicineViewController: UIViewController {
         medicineImageView.image = medicineImageViewData
         apotechLabel.text = apotechLabelData
         medicineSummary.text = medicineSummaryData
-        priceLabel.text = priceLabelData
+        priceLabel.text = "Rp. \(priceLabelData!)"
         medicineDescription.text = medicineDescriptionData
+        
+        countLabel.text = "Count: \(countValue)"
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         
         dismissPickerView()
@@ -91,5 +110,70 @@ extension MedicineViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         pricePicker.text = selectedPrice
     }
     
+    
+}
+
+// MARK: - BUTTON ACTION AND SAVE DATA
+
+extension MedicineViewController {
+    
+    @IBAction func addToChartPressed(_ sender: UIButton) {
+        
+        // Get nameMedicine, price, count data, total bayar
+        
+        let priceItem = Double(priceLabelData!)! * 1000
+        let countValueItem = Double(countValue)
+        let totalPay = priceItem * countValueItem // 36000.0
+        
+        
+        
+        let numberToFormat = totalPay
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:numberToFormat))
+        
+        
+        let alert = UIAlertController(title: "Order are stored", message: "Thank you for buying", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Close", style: .default) { (action) in
+            
+            // What happen if user click close button
+    
+            let newChart = MedicineObject()
+            newChart.count = String(self.countValue)
+            newChart.medicine = self.title
+            newChart.medicinePrice = self.priceLabelData
+            newChart.totalPay = formattedNumber! // 36,000
+            
+            
+            self.saveData(medicineObject: newChart)
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func stepperPressed(_ sender: UIStepper) {
+        
+        countLabel.text = String("Count: \(Int(sender.value))")
+        countValue = Int(sender.value)
+    }
+    
+    
+    
+    func saveData(medicineObject: MedicineObject) {
+        do {
+            try realm.write {
+                realm.add(medicineObject)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
     
 }
