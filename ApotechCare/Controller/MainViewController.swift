@@ -167,6 +167,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             switch indexPath.row {
             case 0:
                 performScreenPresentationOne(index: 0)
+            case 1:
+                performScreenPresentationOne(index: 0)
             default:
             print("Default Item")
             }
@@ -253,6 +255,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func prepareDataOne(_ index : Int) {
         let categoryVC = storyboard?.instantiateViewController(identifier: "categoryViewController") as! CategoryViewController
+        categoryVC.index = index
         self.navigationController?.pushViewController(categoryVC, animated: true)
     }
     

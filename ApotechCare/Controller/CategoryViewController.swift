@@ -12,6 +12,8 @@ class CategoryViewController: UIViewController {
     
     var categoryModel = CategoryModel()
     
+    var index: Int?
+    
     @IBOutlet weak var collectionOne: UICollectionView!
     @IBOutlet weak var collectionTwo: UICollectionView!
     
@@ -20,6 +22,7 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         
         
+        print(index!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,35 +41,77 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryModel.vitamin.count - 2
+        switch index! {
+        case 0:
+            return categoryModel.favorite.count - 2
+        case 1:
+            return categoryModel.vitamin.count - 2
+        default:
+            print("Default Item of collection view")
+        }
+        return 1
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        if collectionView == self.collectionOne {
-            let cellOne = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierOne", for: indexPath) as! VitaminCell
+        switch index! {
+        case 0:
+            if collectionView == self.collectionOne {
+                let cellOne = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierOne", for: indexPath) as! VitaminCell
+                
+                
+                let index = categoryModel.vitamin[indexPath.row] // 4 data -0-3
+                let image = UIImage(named: "\(index.image)")
+                
+                cellOne.imageView.image = image
+                cellOne.vitaminLabel.text = index.image
+                
+                return cellOne
+            }
             
-            let index = categoryModel.vitamin[indexPath.row] // 4 data -0-3
-            let image = UIImage(named: "\(index.image)")
+            if collectionView == self.collectionTwo {
+                let cellTwo = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierTwo", for: indexPath) as! VitaminCell
+                
+                let index = categoryModel.vitamin[indexPath.row + 2]
+                let image = UIImage(named: "\(index.image)")
+                
+                cellTwo.imageView.image = image
+                cellTwo.vitaminLabel.text = index.image
+                
+                return cellTwo
+                
+            }
             
-            cellOne.imageView.image = image
-            cellOne.vitaminLabel.text = index.image
+        case 1:
+            if collectionView == self.collectionOne {
+                let cellOne = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierOne", for: indexPath) as! VitaminCell
+                
+                let index = categoryModel.vitamin[indexPath.row] // 4 data -0-3
+                let image = UIImage(named: "\(index.image)")
+                
+                cellOne.imageView.image = image
+                cellOne.vitaminLabel.text = index.image
+                
+                return cellOne
+            }
             
-            return cellOne
-        }
-        
-        if collectionView == self.collectionTwo {
-            let cellTwo = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierTwo", for: indexPath) as! VitaminCell
+            if collectionView == self.collectionTwo {
+                let cellTwo = collectionView.dequeueReusableCell(withReuseIdentifier: "vitaminIdentifierTwo", for: indexPath) as! VitaminCell
+                let index = categoryModel.vitamin[indexPath.row + 2]
+                let image = UIImage(named: "\(index.image)")
+                
+                cellTwo.imageView.image = image
+                cellTwo.vitaminLabel.text = index.image
+                
+                return cellTwo
+                
+            }
             
-            let index = categoryModel.vitamin[indexPath.row + 2]
-            let image = UIImage(named: "\(index.image)")
-            
-            cellTwo.imageView.image = image
-            cellTwo.vitaminLabel.text = index.image
-            
-            return cellTwo
-            
+        default:
+            print("Default item of cellforitemat")
         }
         
         return UICollectionViewCell()
